@@ -260,10 +260,7 @@ void IdentSock::ReadLine(const CS_STRING& line)
 		auto network = sock->GetNetwork();
 		DEBUG("identd: found IRC socket for " + network->GetUser()->GetUserName() + "/" + network->GetName() + " on " + GetLocalIP() + ":" + CString(port));
 
-		CString sIdent = network->GetIdent();
-		if (sIdent.empty())
-			sIdent = network->GetUser()->GetIdent();
-		reply += "USERID : UNIX : " + sIdent;
+		reply += "USERID : UNIX : " + network->GetIdent();
 	}
 	else
 	{
